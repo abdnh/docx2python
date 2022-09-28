@@ -18,7 +18,7 @@ These entries can be accessed in the file by their abbreviations::
         contents of paragraph
     </w:p>
 
-``lxml.etree`` reads ``"<w:p>"`` as
+``xml.etree.ElementTree`` reads ``"<w:p>"`` as
 
 ``"{http://schemas.openxmlformats.org/wordprocessingml/2006/main}p"``
 
@@ -40,7 +40,7 @@ supposed to ever happen). *If* this happens::
     3) Search for xmlns:w=[some string]
     4) update NSMAP['w'] = some string
 
-Lxml allows (deceptively) easy access to a file's namespaces; however, this is
+xml.etree.ElementTree allows (deceptively) easy access to a file's namespaces; however, this is
 problematic because ``root_element.nsmap`` may not retrieve all nsmap entries. Other
 entries may be buried inside sub-environments further down in the tree. It is safer
 to explicate namespace mapping.
@@ -66,7 +66,7 @@ def qn(tag: str) -> str:
     Turn a namespace-prefixed tag into a Clark-notation qualified tag.
 
     Stands for 'qualified name', a utility function to turn a namespace prefixed tag
-    name into a Clark-notation qualified tag name for lxml.
+    name into a Clark-notation qualified tag name for xml.etree.ElementTree.
 
         >>> qn('w:cSld')
         '{http://schemas.../main}cSld'

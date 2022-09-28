@@ -33,7 +33,7 @@ from typing import Dict, List, Optional, Set, Union
 from warnings import warn
 from pathlib import Path
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .attribute_register import XML2HTML_FORMATTER
 from .docx_context import collect_numFmts, collect_rels
@@ -83,7 +83,7 @@ class File:
         self.__path: Union[None, str] = None
         self.__rels_path: Union[None, str] = None
         self.__rels: Union[None, Dict[str, str]] = None
-        self.__root_element: Union[None, etree._Element] = None
+        self.__root_element: Union[None, etree.Element] = None
 
     def __repr__(self) -> str:
         """File with self.path"""
@@ -186,7 +186,7 @@ class File:
         return self.__rels
 
     @property
-    def root_element(self) -> etree._Element:
+    def root_element(self) -> etree.Element:
         """Root element of the file.
 
         Try to merge consecutive, duplicate (except text) elements in content files.
@@ -217,7 +217,7 @@ class File:
         return get_text(self)
 
     def get_content(
-        self, root: Optional[etree._Element] = None
+        self, root: Optional[etree.Element] = None
     ) -> List[List[List[List[str]]]]:
         """
         The same content as property 'content' with optional given root.

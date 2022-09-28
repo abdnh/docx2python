@@ -12,7 +12,7 @@ much of this.
 from enum import Enum
 from typing import Callable, Iterator, NamedTuple, Optional
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .namespace import qn
 
@@ -115,7 +115,7 @@ RELS_ID = qn("r:id")
 _CONTENT_TAGS = {x for x in Tags} - {Tags.RUN_PROPERTIES, Tags.PAR_PROPERTIES}
 
 
-def has_content(tree: etree._Element) -> Optional[str]:
+def has_content(tree: etree.Element) -> Optional[str]:
     """
     Does the element have any descendent content elements?
 
@@ -131,7 +131,7 @@ def has_content(tree: etree._Element) -> Optional[str]:
     If no content is found, the element can be safely ignored going forward.
     """
 
-    def iter_content(tree_: etree._Element) -> Iterator[str]:
+    def iter_content(tree_: etree.Element) -> Iterator[str]:
         """Yield all content elements in tree"""
         if tree_.tag in _CONTENT_TAGS:
             yield tree_.tag

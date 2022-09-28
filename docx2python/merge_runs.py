@@ -13,7 +13,7 @@ import functools
 from itertools import groupby
 from typing import List, TYPE_CHECKING, Tuple
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .attribute_register import RELS_ID, Tags, has_content
 from .text_runs import get_html_formatting
@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 _MERGEABLE_TAGS = {Tags.RUN, Tags.HYPERLINK, Tags.TEXT, Tags.TEXT_MATH}
 
 
-def _elem_key(file: File, elem: etree._Element) -> Tuple[str, str, List[str]]:
+def _elem_key(file: File, elem: etree.Element) -> Tuple[str, str, List[str]]:
     # noinspection SpellCheckingInspection
     """
     Enough information to tell if two elements are more-or-less identically formatted.
@@ -61,7 +61,7 @@ def _elem_key(file: File, elem: etree._Element) -> Tuple[str, str, List[str]]:
     return tag, "", get_html_formatting(elem, file.context.xml2html_format)
 
 
-def merge_elems(file: File, tree: etree._Element) -> None:
+def merge_elems(file: File, tree: etree.Element) -> None:
     # noinspection SpellCheckingInspection
     """
     Recursively merge duplicate (as far as docx2python is concerned) elements.

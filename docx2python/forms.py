@@ -16,13 +16,13 @@ them by their escape sequences.
 from contextlib import suppress
 from typing import Union
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .namespace import qn
 
 
 # noinspection PyPep8Naming
-def get_checkBox_entry(checkBox: etree._Element) -> str:
+def get_checkBox_entry(checkBox: etree.Element) -> str:
     """Create text representation for a checkBox element.
 
     :param checkBox: a checkBox xml element
@@ -64,7 +64,7 @@ def get_checkBox_entry(checkBox: etree._Element) -> str:
 
 
 # noinspection PyPep8Naming
-def get_ddList_entry(ddList: etree._Element) -> str:
+def get_ddList_entry(ddList: etree.Element) -> str:
     """Get only the selected string of a dropdown list.
 
     <w:ddList>

@@ -21,7 +21,7 @@ import warnings
 from collections import defaultdict
 from typing import Any, Dict, List, Callable
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from docx2python import numbering_formats as nums
 from docx2python.namespace import qn
@@ -109,7 +109,7 @@ class BulletGenerator:
         self.numId2count = _new_list_counter()
 
     # noinspection PyPep8Naming
-    def get_bullet(self, paragraph: etree._Element) -> str:
+    def get_bullet(self, paragraph: etree.Element) -> str:
         """
         Get bullet string if paragraph is numbered. (e.g, '--  ' or '1)  ')
 

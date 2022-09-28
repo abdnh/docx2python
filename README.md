@@ -314,7 +314,7 @@ data), and that's pretty useful in itself.
 
 ## expose some intermediate functionality
 
-Navigating through XML is straightforward with `lxml`. It is a separate step to take whatever you find and bring it
+Navigating through XML is straightforward with `xml.etree.ElementTree`. It is a separate step to take whatever you find and bring it
 *out* of the XML. For instance, you may want to iterate over a document, looking for paragraphs with a particular
 format, then pull the text out of those paragraphs. Docx2python v1 did not separate or expose "iter the document" and
 "pull the content". Docx2python v2 separates and exposes these steps. This will allow easier extension.

@@ -12,7 +12,7 @@ from collections import defaultdict
 from typing import Dict
 
 import pytest
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 # noinspection PyProtectedMember
 from docx2python.bullets_and_numbering import (

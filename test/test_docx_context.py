@@ -14,7 +14,7 @@ from docx2python.docx_context import collect_numFmts
 from docx2python.docx_reader import DocxReader
 from docx2python.iterators import iter_at_depth
 from docx2python.main import docx2python
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .conftest import RESOURCES
 

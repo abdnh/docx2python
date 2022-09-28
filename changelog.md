@@ -64,7 +64,7 @@ Now only supports Python 3.7+
 
 Docx2Python v1 extracted xml from a zip file and passed it straight to formatting functions. Docx2Python v2 takes an intermediate step: hold the xml and inferred attributes of the input docx in DocxContext and File instances. These allow a view into the xml for users who are comfortable working that way. A user can now execute search&replace and other simple operations before extracting the text. Here's an example:
 
-    def replace_root_text(root: etree._Element, old: str, new: str) -> None:
+    def replace_root_text(root: etree.Element, old: str, new: str) -> None:
     """Replace :old: with :new: in all descendants of :root:
 
         :param root: an etree element presumably containing descendant text elements
@@ -98,7 +98,7 @@ Docx2Python v1 extracted xml from a zip file and passed it straight to formattin
 
 --  Save altered xml
 
-A user can extract the xml, alter it, and save the resulting docx. This will be simpler than accomplishing the same with just lxml, because
+A user can extract the xml, alter it, and save the resulting docx. This will be simpler than accomplishing the same with just xml.etree.ElementTree, because
 
 1. consecutive runs with identical styles will be merged (no more attempting search and replace with "wo" "rds" " brok" "en" " in" "to" "multiple runs".)
 2. some of the file structure will be available.

@@ -14,13 +14,13 @@ import re
 import zipfile
 from typing import Dict, List, Optional
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .namespace import qn
 
 
 # noinspection PyPep8Naming
-def collect_numFmts(numFmts_root: etree._Element) -> Dict[str, List[str]]:
+def collect_numFmts(numFmts_root: etree.Element) -> Dict[str, List[str]]:
     """
     Collect abstractNum bullet formats into a dictionary
 
@@ -73,7 +73,7 @@ def collect_numFmts(numFmts_root: etree._Element) -> Dict[str, List[str]]:
                 abstractNumId2numFmts[id_].append(str(numFmt.attrib[qn("w:val")]))
 
     numId2numFmts = {}
-    num: etree._Element
+    num: etree.Element
     for num in (x for x in numFmts_root.findall(qn("w:num")) if x is not None):
         numId = num.attrib[qn("w:numId")]
         if numId is None:
@@ -162,7 +162,7 @@ def collect_rels(zipf: zipfile.ZipFile) -> Dict[str, List[Dict[str, str]]]:
 
 
 # noinspection PyPep8Naming
-def collect_docProps(root: etree._Element) -> Dict[str, Optional[str]]:
+def collect_docProps(root: etree.Element) -> Dict[str, Optional[str]]:
     # noinspection SpellCheckingInspection
     """
     Get author, modified, etc. from core-properties (should be docProps/core.xml)

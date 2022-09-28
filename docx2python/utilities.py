@@ -14,13 +14,13 @@ import re
 from pathlib import Path
 from typing import Iterator, List, Tuple, Union
 
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 from .iterators import iter_at_depth
 from .main import docx2python
 
 
-def replace_root_text(root: etree._Element, old: str, new: str) -> None:
+def replace_root_text(root: etree.Element, old: str, new: str) -> None:
     """Replace :old: with :new: in all descendants of :root:
 
     :param root: an etree element presumably containing descendant text elements
